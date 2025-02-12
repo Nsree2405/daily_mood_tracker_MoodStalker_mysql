@@ -10,8 +10,8 @@ def create_connection():
         conn = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='aim@1432',
-            database='oracle'
+            password='navyasree@1432',
+            database='moodstalker'
         )
     except mysql.connector.Error as e:
         print(e)
@@ -31,6 +31,7 @@ def get_user_details(username,email,password):
 # Function to retrieve user details and mood information
 def get_user_mood_details(username):
     conn = create_connection()
+    print("yes hurray")
     if conn is not None:
         cursor = conn.cursor()
         cursor.execute('''
@@ -57,6 +58,7 @@ def get_user_details_submit():
     email = request.form['email']
     password = request.form['password']    
     user_details = get_user_details(username,email,password)
+    
     user_mood_details = get_user_mood_details(username)
     if user_details and user_mood_details:
         return render_template('user_details.html', user_details=user_details, user_mood_details=user_mood_details)
@@ -107,7 +109,7 @@ def record_mood():
         return 'Failed to connect to the database.'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)  # or any other available port
 
 
     

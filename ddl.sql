@@ -1,4 +1,7 @@
+-- Active: 1739256140286@@127.0.0.1@3306@moodstalker
 -- creation of user table and its modifications
+use DATABASE moodstalker
+
 create table user(
     uid int,
     uname varchar(20),
