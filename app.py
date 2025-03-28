@@ -107,6 +107,8 @@ def record_mood():
         return 'Mood recorded successfully!'
     else:
         return 'Failed to connect to the database.'
+def handler(event, context):
+    return app(event, context)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)  # or any other available port
